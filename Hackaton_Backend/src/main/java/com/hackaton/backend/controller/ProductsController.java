@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.hackaton.backend.model.ProductsDTO;
+import com.hackaton.backend.repository.ImagesProductsRepository;
 import com.hackaton.backend.repository.ProductsRepository;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -14,6 +15,9 @@ import com.hackaton.backend.repository.ProductsRepository;
 public class ProductsController {
 	@Autowired
 	private ProductsRepository repository;
+	
+	@Autowired
+	private ImagesProductsRepository repositoryIMG; 
 	
 	@GetMapping("/list/{id_user}")
 	public ArrayList<ProductsDTO> list(@PathVariable("id") long id){

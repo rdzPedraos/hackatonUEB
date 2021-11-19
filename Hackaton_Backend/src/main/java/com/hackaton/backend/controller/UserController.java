@@ -1,6 +1,7 @@
 package com.hackaton.backend.controller;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +37,13 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public UsersDTO update(@RequestBody UsersDTO user) {
+		//Pattern pattern = Pattern.compile("");
+		//pattern.matcher(variable).find() // true si es valido.;
 		if( getUserByEmail(user.getEmail()) == null ) 
 		{
+			user.setName( user.getName().toUpperCase() );
+			user.setLastName( user.getLastName().toUpperCase() );
+			
 			user.setCode_role_user(2);
 			UsersDTO user_create = repository.save(user);
 			return user_create;
