@@ -1,75 +1,45 @@
 package com.hackaton.backend.controller;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.hackaton.backend.DAO.UserServices;
 import com.hackaton.backend.model.UsersDTO;
-import com.hackaton.backend.repository.UsersRepository;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.github.cliftonlabs.json_simple.JsonObject;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:5000")
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
 	@Autowired
-	private UsersRepository repository;
+	private UserServices services;
+	
 	
 	@GetMapping("/list")
+	//Listar usuarios:
 	public ArrayList<UsersDTO> list(){
-		ArrayList<UsersDTO> list = (ArrayList<UsersDTO>) repository.findAll();
-		list.removeIf( user -> (user.getDisabled() == 1) );
-		return list;
+		return services.list();
 	}
 	
 	@GetMapping("/search/{email}/{password}")
+	//Buscar usuario en concreto:
 	public UsersDTO list(@PathVariable("email") String email, @PathVariable("password") String password){
-		//Obtengo el usuario:
-		UsersDTO user = getUserByEmail(email);
-		
-		//Rertorna null si no encontró nada.
-		//Usuario si encontró algo.
-		if( user != null && user.getPassword().equals(password)) return user;
-		return null;
+		return services.search(email, password);
 	}
 	
 	@PostMapping("/create")
-	public UsersDTO update(@RequestBody UsersDTO user) {
-		//Pattern pattern = Pattern.compile("");
-		//pattern.matcher(variable).find() // true si es valido.;
-		if( getUserByEmail(user.getEmail()) == null ) 
-		{
-			user.setName( user.getName().toUpperCase() );
-			user.setLastName( user.getLastName().toUpperCase() );
-			
-			user.setCode_role_user(2);
-			UsersDTO user_create = repository.save(user);
-			return user_create;
-		}
-		return null;
+	//Crear usuario:
+	public JsonObject create(@RequestBody ObjectNode object ) {
+		JsonObject msj = services.create(object);
+		return msj;
 	}
 	
 	@DeleteMapping("/remove/{id}")
+	//Remover usuario:
 	public void remove(@PathVariable("id") long id) {
-		UsersDTO user = repository.findById(id).get();
-		user.setDisabled(1);
-		update(user);
-	}
-	
-	private UsersDTO getUserByEmail(String email) {
-		//Obtengo mi lista:
-		ArrayList<UsersDTO> list = list();
-		//usuario final:
-		UsersDTO user = null;
-		
-		//Busco el primer usuario que encuentre con las caracteristicas, de la última pos a la primera.
-		int i = list.size()-1;
-		while(i >= 0 && !list.get(i).getEmail().equals(email)) i--;
-		
-		//En caso de que exista registro retorna el usuario, de lo contrario retorna null.
-		if(i>=0) user = list.get(i);
-		return user;
+		services.remove(id);
 	}
 }

@@ -22,17 +22,30 @@ public class ProductsDTO {
 	
 	private double price;
 	
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	private int available;
 	
-	private int in_use;
+	@Column(columnDefinition = "INT NOT NULL DEFAULT 0")
+	private int not_available;
 
 	public ProductsDTO(){
 		
 	}
 	
+	public ProductsDTO(int code_category_product, int code_user_product, String title, 
+		String description, double price, int available
+	) {
+		super();
+		this.code_category_product = code_category_product;
+		this.code_user_product = code_user_product;
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.available = available;
+		not_available = 0;
+	}
+
 	public ProductsDTO(int code, int code_category_product, int code_user_product, String title, String description,
-			double price, Date date, int in_use) {
+			double price, int available, int not_available) {
 		super();
 		this.code = code;
 		this.code_category_product = code_category_product;
@@ -40,9 +53,11 @@ public class ProductsDTO {
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		this.date = date;
-		this.in_use = in_use;
+		this.available = available;
+		this.not_available = not_available;
 	}
+
+
 
 	public int getCode() {
 		return code;
@@ -92,19 +107,21 @@ public class ProductsDTO {
 		this.price = price;
 	}
 
-	public Date getDate() {
-		return date;
+	public int getavailable() {
+		return available;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setavailable(int available) {
+		this.available = available;
 	}
 
-	public int getIn_use() {
-		return in_use;
+	public int getNot_available() {
+		return not_available;
 	}
 
-	public void setIn_use(int in_use) {
-		this.in_use = in_use;
+	public void setNot_available(int not_available) {
+		this.not_available = not_available;
 	}
+
+	
 }

@@ -13,8 +13,6 @@ public class UsersDTO {
 	@Column(columnDefinition = "INT NOT NULL DEFAULT 2")
 	private int code_role_user;
 	
-	private String name;
-	private String lastName;
 	
 	@Column(unique=true)
 	private String email;
@@ -27,13 +25,19 @@ public class UsersDTO {
 		
 	}
 	
-	public UsersDTO(long code, int code_role_user, String name, String lastName, String email, String password,
+	public UsersDTO(String email, String password) {
+		super();
+		code_role_user = 2;
+		this.email = email;
+		this.password = password;
+	}
+	
+	
+	public UsersDTO(long code, int code_role_user, String email, String password,
 			int disabled) {
 		super();
 		this.code = code;
 		this.code_role_user = code_role_user;
-		this.name = name;
-		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.disabled = disabled;
@@ -53,22 +57,6 @@ public class UsersDTO {
 
 	public void setCode_role_user(int code_role_user) {
 		this.code_role_user = code_role_user;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getEmail() {

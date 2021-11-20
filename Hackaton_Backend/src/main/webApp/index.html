@@ -23,12 +23,12 @@
 	  	<input type="text" id="code" placeholder="codigo"/> 
 	   -->
 
-    <form id="form">
-        
+    <form id="form" enctype="multipart/form-data">
+    	<input type="text" name="name"/>
+    	<input type="text" name="apellido"/>
+        <input type="file" name="file" multiple>
         <input type="submit" value="enviar" id="enviar" placeholder="enviar">
     </form>
-    
-    <button>Traer</button>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script>
@@ -38,7 +38,25 @@
             //login();
             //deleteUser();
             //listUsers();
+            sendImg();
         });
+        
+        function sendImg(){
+        	let formData = $('#form')[0];
+        	$.ajax({
+                type: 'POST',
+                url: "/products/create",
+                data: new FormData(formData),
+                contentType: false,
+                cache: false,
+                processData: false,
+    
+                success: function(response){
+                    console.log(response);
+                }
+
+            });
+        }
         
         
         function listUsers(){
@@ -85,10 +103,15 @@
         
         function createUser(){
         	let data = {
-            		'name': $('#name').val(),
-            		'lastName': $('#lastName').val(),
-            		'email': $('#email').val(),
-            		'password': $('#password').val(),
+       			'user':{        			
+               		'email': $('#email').val(),
+               		'password': $('#password').val()
+           		},
+           		
+           		'info':{
+           			'name': $('#name').val(),
+            		'last_name': $('#last_name').val(),
+           		}
             };
             $.ajax({
                 type: 'POST',
