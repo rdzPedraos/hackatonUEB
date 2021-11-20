@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.hackaton.backend.DAO.ProductsServices;
 import com.hackaton.backend.model.ProductsDTO;
+import com.hackaton.backend.model.views.ProductsView;
 
 @CrossOrigin(origins = "http://localhost:5000")
 @RestController
@@ -21,16 +21,17 @@ public class ProductsController {
 	
 	//Listamos los productos que no estén en uso:
 	@GetMapping("/list")
-	public ArrayList<ProductsDTO> list(){
+	public ArrayList<ProductsView> list(){
 		return services.list();
 	}
 	
-	@GetMapping("/list/{id_user}")
+	@GetMapping("/list/{type}/{id}")
 	//listar productos de un usuario:
-	public ArrayList<ProductsDTO> listAll(@PathVariable("id") long id){
-		services.list(id);
-		return null;
-		//return services.list(id);
+	public ArrayList<ProductsView> listAll(
+		@PathVariable("type") String type,
+		@PathVariable("id") long id
+	){
+		return services.list(id, type);
 	}
 	
 	@PostMapping("/create")
@@ -51,7 +52,7 @@ public class ProductsController {
 	}
 	
 	@DeleteMapping("/remove/{id}")
-	public void remove(@PathVariable("id") long id) {
+	public void remove(@PathVariable("id") int id) {
 		services.delete(id);
 	}
 }

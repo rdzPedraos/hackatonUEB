@@ -16,8 +16,8 @@ import com.hackaton.backend.utils.FileUtils;
 public class ImagesProductsServices {
 	@Autowired
 	ImagesProductsRepository repo;
-	
-	private static String path = "/src/main/webApp/assets/products/img/";
+	private static String MAIN_PATH = "C:/Users/ESTUDIANTE/Desktop/Ueb/hackaton/Hackaton_Backend/";
+	private static String path = MAIN_PATH+"src/main/webApp/assets/img/products/";
 	
 	
 	/**
@@ -25,7 +25,7 @@ public class ImagesProductsServices {
 	 * @param id id del producto.
 	 * @return lista de imgs del producto.
 	 */
-	public ArrayList<ImagesProductsDTO> getImgs(int id) {
+	public ArrayList<ImagesProductsDTO> getImgs(long id) {
 		//Obtengo la lista:
 		ArrayList<ImagesProductsDTO> list = (ArrayList<ImagesProductsDTO>) repo.findAll();
 		//Depuro la lista para tener sólo los que sean del tipo id producto.
@@ -43,12 +43,15 @@ public class ImagesProductsServices {
 	 */
 	public boolean create(
 			MultipartFile file, 
-			int codeProduct, 
-			int codeUser
+			long codeProduct, 
+			long codeUser
 	) {
 		boolean success = false;
 		
 		String url = FileUtils.upload(file, path+codeUser+"/"+codeProduct);
+		System.out.println("________________________");
+		System.out.println(url);
+		System.out.println("________________________");
 		if( url != null ) {
 			ImagesProductsDTO imgProd = new ImagesProductsDTO(codeProduct, url);
 			if( repo.save(imgProd) != null ) {
@@ -64,7 +67,7 @@ public class ImagesProductsServices {
 	 * Elimina todas las imágenes de un producto
 	 * @param id id del producto en la base de datos.
 	 */
-	public void deleteByIdProduct(int id) {
+	public void deleteByIdProduct(long id) {
 		//Obtengo la lista de imágenes para ese producto.
 		ArrayList<ImagesProductsDTO> list = getImgs(id);
 		//Lo recorro para borrarlo de la base de datos:
@@ -88,7 +91,7 @@ public class ImagesProductsServices {
 		String extension = name.substring( pos + 1 ).toLowerCase();
 		
 		//Validamos extensión y peso:
-		if( !Pattern.compile("^[(jpeg)(jpg)(png)]$").matcher(extension).find() ) {
+		if( !Pattern.compile("^((jpg)|(jpeg)|(png))$").matcher(extension).find() ) {
 			msj.put("success", false);
 			msj.put("msj", "Formato no valido en la imágen «"+name.substring(0, pos)+"»");
 		}

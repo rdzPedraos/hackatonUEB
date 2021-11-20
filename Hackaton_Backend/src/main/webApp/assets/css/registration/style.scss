@@ -1,10 +1,10 @@
 @font-face {
 	font-family: "Muli-Regular";
-	src: url('../fonts/muli/Muli-Regular.ttf');
+	src: url('../../fonts/muli/Muli-Regular.ttf');
 }
 @font-face {
 	font-family: "Muli-SemiBold";
-	src: url('../fonts/muli/Muli-SemiBold.ttf');
+	src: url('../../fonts/muli/Muli-SemiBold.ttf');
 }
 * {
   -webkit-box-sizing: border-box;
@@ -129,7 +129,6 @@ img {
 }
 .wizard > .content {
     position: relative;
-    height: 521px;
 }
 .inner {
 	display: flex;
@@ -252,7 +251,27 @@ p {
 	&:-moz-placeholder { 
 		color: #999;
 	}
+
+	& ~ span{
+		display:none;
+		color: #8d0b0b;
+	}
 }
+
+.form-control.success{
+	color: #6d7f52;
+	border-color: #28cb62;
+}
+
+.form-control.error{
+	color: #500707;
+	border-color: #cb2828;
+
+	& ~ span{
+		display: block;
+	}
+}
+
 select.form-control {
 	-moz-appearance: none;
     -webkit-appearance: none;
@@ -264,11 +283,11 @@ select.form-control {
 }
 textarea.form-control {
 	padding: 8px 0;
-	background: url('../images/textarea-bg.png') no-repeat right bottom 3px;
+	background: url('../../img/textarea-bg.png') no-repeat right bottom 3px;
 }
 .actions {
 	position: absolute;
-	bottom: 55px;
+	bottom: 65px;
 	right: 51px;
 	ul {
 		display: flex;
@@ -280,6 +299,7 @@ textarea.form-control {
 			display: inline-flex;
 			height: 41px;
 			width: 135px;
+			top: 30px;
 			align-items: center;
 			background: #e9e0cf;
 			font-family: "Muli-SemiBold";
@@ -399,7 +419,8 @@ textarea.form-control {
 .checkbox-circle {
 	position: relative;
 	padding-left: 23px;
-	margin-top: 41px;
+	//margin-top: 41px;
+	padding-bottom: 20px;
 	width: 63%;
 	&.mt-24 {
 		margin-top: 24px;

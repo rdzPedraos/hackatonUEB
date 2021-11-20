@@ -18,6 +18,8 @@ public class ProductsServices {
 	
 	@Autowired
 	private ProductsRepository repo;
+	
+	@Autowired
 	private ImagesProductsServices servImg;
 	
 	/**
@@ -124,16 +126,16 @@ public class ProductsServices {
 	}
 	
 	
-	public void delete(int id) {
+	public void delete(long id) {
 		servImg.deleteByIdProduct( id );
-		repo.deleteById( (long) id );
+		repo.deleteById( id );
 	}
 	
 	
 	private JsonObject validate(ProductsDTO product) {
 		JsonObject msj = new JsonObject();
 		
-		String rgx = "^([A-Za-záéíóúÁÉÍÓÚ ]{0,255}$";
+		String rgx = "^[A-Za-záéíóúÁÉÍÓÚ ]{0,255}$";
 		if(
 			Pattern.compile(rgx).matcher(product.getTitle()).find() &&
 			Pattern.compile(rgx).matcher(product.getDescription()).find() &&

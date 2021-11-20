@@ -38,15 +38,16 @@ public class InfoUserServices {
 		
 		//Validamos todos los campos:
 		if(
-			Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ]{3,15} ?{1,2}$").matcher(info.getName()).find() &&
-			Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ]{3,15} ?{1,2}$").matcher(info.getLast_name()).find() &&
+			Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ]{3,15} ?){1,2}$").matcher(info.getName()).find() &&
+			Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ]{3,15} ?){1,2}$").matcher(info.getLast_name()).find() &&
 			info.getAge() < 100 && info.getAge() > 0 &&
-			Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ]{3,15} ?){1,45}$").matcher(info.getAddress()).find() &&
+			Pattern.compile("^[A-Za-záéíóúÁÉÍÓÚ0-9-#. ]{1,45}$").matcher(info.getAddress()).find() &&
 			Pattern.compile("^[0-9]{6}$").matcher(info.getZip_code()).find() &&
 			( info.getMessage() == null ||
 			( info.getMessage() != null && 
-				Pattern.compile("^([A-Za-záéíóúÁÉÍÓÚ ]{0,255}$").matcher(info.getMessage()).find())
+				Pattern.compile("^[A-Za-záéíóúÁÉÍÓÚ ]{0,255}$").matcher(info.getMessage()).find())
 			)
+			
 		) msj.put("success", true);
 		else{
 			msj.put("success", false);

@@ -76,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `hackaton_db`.`products` (
   `title` TEXT NOT NULL,
   `description` TEXT NOT NULL,
   `price` DOUBLE NOT NULL DEFAULT 0,
-  `date` DATE NOT NULL,
   `available` INT NOT NULL,
   `not_available` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`code`),
@@ -132,7 +131,6 @@ CREATE TABLE IF NOT EXISTS `hackaton_db`.`images_products` (
   `code` INT NOT NULL,
   `code_product_image` INT NOT NULL,
   `url` TEXT NOT NULL,
-  `description` TEXT NULL,
   PRIMARY KEY (`code`),
   INDEX `product_image_idx` (`code_product_image` ASC) VISIBLE,
   CONSTRAINT `product_image`
@@ -206,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `hackaton_db`.`info_user` (
   `age` INT(2) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
   `zip_code` VARCHAR(45) NOT NULL,
-  `message` VARCHAR(45) NULL,
+  `message` VARCHAR(255) NULL,
   PRIMARY KEY (`code`),
   INDEX `info_user_municipalities_idx` (`code_municipality` ASC) VISIBLE,
   CONSTRAINT `info_user_users`

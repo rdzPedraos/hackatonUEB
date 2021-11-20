@@ -136,8 +136,8 @@ public class UserServices {
 		msj.put("success", false);
 		
 		if(
-			Pattern.compile("^([A-Za-z0-9-_]+@[A-Za-z0-9-_]+(.[a-z0-9A-Z]+)+)$").matcher(user.getEmail()).find() &&
-			Pattern.compile("^[A-Za-z0-9_\\*\\-]{5,}$").matcher(user.getPassword()).find()
+			Pattern.compile("^[A-Za-z0-9-_]+@[A-Za-z0-9-_]+(\\.[A-Za-z0-9]+)+$").matcher(user.getEmail()).find() &&
+			Pattern.compile("^[A-Za-z0-9_*-]{5,}$").matcher(user.getPassword()).find()
 		) {
 			//Validamos si existe un usuario ya.
 			UsersDTO user_exist = getUserByEmail(user.getEmail());

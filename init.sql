@@ -1,7 +1,12 @@
 select * from rols;
+select * from categories;
 select * from countries;
 select * from departments;
 select * from municipalities;
+
+#Categorias:
+INSERT INTO categories (name, description) values ('tecnología', "Descripción cualquiera.");
+INSERT INTO categories (name, description) values ('muebles', "Descripción cualquiera V22.");
 
 
 #Roles en la página:
@@ -51,7 +56,7 @@ INSERT INTO departments (`code`, `code_country_department`, `name`) VALUES
 
 
 
-
+DELETE FROM municipalities WHERE code!=1;
 
 #Creación de municipios:
 INSERT INTO municipalities (`code`, `code_department_municipality`, `name`) VALUES

@@ -8,9 +8,9 @@ public class ImagesProductsDTO {
 	@Id
 	@Column(name = "code")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int code;
+	private long code;
 	
-	private int code_product_image;
+	private long code_product_image;
 	
 	private String url;
 	
@@ -18,14 +18,14 @@ public class ImagesProductsDTO {
 	public ImagesProductsDTO() {
 		
 	}
-	
-	public ImagesProductsDTO(int code_product_image, String url) {
+
+	public ImagesProductsDTO(long code_product_image, String url) {
 		super();
 		this.code_product_image = code_product_image;
 		this.url = url;
 	}
-
-	public ImagesProductsDTO(int code, int code_product_image, String url) {
+	
+	public ImagesProductsDTO(long code, int code_product_image, String url) {
 		super();
 		this.code = code;
 		this.code_product_image = code_product_image;
@@ -33,18 +33,18 @@ public class ImagesProductsDTO {
 	}
 
 
-	public int getCode_product_image() {
+	public long getCode_product_image() {
 		return code_product_image;
 	}
 
-	public void setCode_product_image(int code_product_image) {
+	public void setCode_product_image(long code_product_image) {
 		this.code_product_image = code_product_image;
 	}
 
-	public int getCode() {
+	public long getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 	public String getUrl() {

@@ -12,7 +12,8 @@ public class ProductsDTO {
 	
 	@Id
 	@Column(name = "code")
-	private int code;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long code;
 	
 	private int code_category_product;
 	private int code_user_product;
@@ -57,13 +58,11 @@ public class ProductsDTO {
 		this.not_available = not_available;
 	}
 
-
-
-	public int getCode() {
+	public long getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 
