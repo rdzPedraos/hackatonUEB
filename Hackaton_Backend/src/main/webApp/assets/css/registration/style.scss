@@ -141,7 +141,6 @@ img {
 }
 .image-holder {
 	width: 40%;
-	height: 521px;
 }
 .form-content {
 	width: 60%;
@@ -172,7 +171,7 @@ p {
 }
 .form-row {
 	display: flex;
-	margin-bottom: 18px;
+	margin-bottom: 15px;
 	.form-holder {
 		width: 50%;
 		margin-right: 30px;
@@ -234,6 +233,8 @@ p {
 	height: 37px;
 	border: none;
 	border-bottom: 2px solid #e6e6e6;
+	box-shadow: none;
+	border-radius: 0;
 	width: 100%;
 	color: #666;
 	&:focus {
@@ -430,7 +431,7 @@ textarea.form-control {
 		color: #999;
 		font-size: 13px;
 		line-height: 1.9;
-		transform: translateY(-5px);
+		//transform: translateY(-5px);
 		a {
 			color: #6d7f52;
 			&:hover {
@@ -476,8 +477,9 @@ textarea.form-control {
 	}
 	.image-holder {
 		img {
-			height: 521px;
+			height: 100%;
 			object-fit: cover;
+			object-position: top left;
 		}
 	}
 	
@@ -494,6 +496,7 @@ textarea.form-control {
 	.image-holder {
 		width: 100%;
 		img {
+			height: 521px;
 			width: 100%;
 		}
 	}

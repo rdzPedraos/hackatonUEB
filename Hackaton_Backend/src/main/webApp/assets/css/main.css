@@ -1,0 +1,77 @@
+
+/* Modal: */
+#modalSubmit{
+    background: #00ee0022;
+    color: #506e20;
+}
+
+#modalSubmit .modal-content{
+    background: #eee;
+}
+
+#modalSubmit .modal-header h5{
+    font-weight: bold;
+    font-size:20px;
+}
+
+#modalSubmit .modal-body {
+    padding: 20px;
+}
+
+#modalSubmit .modal-body p{
+    color: #000;
+    margin-bottom: 30px;
+}
+
+#modalSubmit button{
+    display: block;
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    border:2px solid #6d7f52;
+    border-radius: 10px;
+
+    font-weight: bold;
+    background: #6d7f52;
+    color: #fff;
+    font-size: 20px;
+
+    transition: .2s all;
+}
+
+#modalSubmit button:hover{
+    background: none !important;
+    color: #6d7f52;
+    transition: .2s all;
+}
+
+
+
+#modalSubmit.succes{
+    background: #00ee0022;
+}
+
+#modalSubmit.succes button{
+    background: #005700
+}
+
+#modalSubmit.succes button:hover{
+    background: none;
+    color: #005700;
+    transition: .2s all;
+}
+
+#modalSubmit.error{
+    background: #ee000055;
+    color: #ad0505;
+}
+
+#modalSubmit.error button{
+    background: #ad0505;
+    border-color: #ad0505;
+}
+
+#modalSubmit.error button:hover{
+    color: #ad0505;
+    transition: .2s all;
+}

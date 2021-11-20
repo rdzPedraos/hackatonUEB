@@ -5,16 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    
     <!-- MATERIAL DESIGN ICONIC FONT -->
 	<link rel="stylesheet" href="../assets/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+    
     <!-- STYLE CSS -->
-	<link rel="stylesheet" href="../assets/css/registration/style.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/registration/style.css">
 </head>
 <body>
-    <datalist id="municipalities">
-        
-    </datalist>
+    <!-- elements for pages -->
+    <datalist id="municipalities-dl"></datalist>
 
+    <div class="modal fade" tabindex="-1" id="modalSubmit">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+
+                <div class="modal-body">
+                    <p class="m-0"></p>
+
+                    <button type="button" 
+                            class="btn btn-danger" 
+                            data-dismiss="modal">
+                            Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- pages -->
     <div class="wrapper">
         <form action="" id="wizard">
             <!-- Slide 1 -->
@@ -51,11 +75,11 @@
                         </div>
                         <div class="form-row">
                             <div class="form-holder">
-                                <input type="text" placeholder="Your password" class="form-control" id="password">
-                                <span>Contraseña invalida. caracteres permitidos: -*_</span>
+                                <input type="password" placeholder="Your password" class="form-control" id="password">
+                                <span>Min 5 digitos. No usar caracteres especiales.</span>
                             </div>
                             <div class="form-holder">
-                                <input type="text" placeholder="Verify password" class="form-control" id="password2">
+                                <input type="password" placeholder="Verify password" class="form-control" id="password2">
                                 <span>Las contraseñas no coinciden.*</span>
                             </div>
 
@@ -100,6 +124,7 @@
                         <div class="form-row">
                             <div class="form-holder w-100">
                                 <input type="text" placeholder="Address" class="form-control" id="address">
+                                <span>Sólo se permiten números letras y -#.</span>
                             </div>
                         </div>
 
@@ -109,12 +134,7 @@
                                     <div class="select-control">Your department</div>
                                     <i class="zmdi zmdi-caret-down"></i>
                                 </div>
-                                <ul class="dropdown">
-                                    <li rel="United States">United States</li>
-                                    <li rel="United Kingdom">United Kingdom</li>
-                                    <li rel="Colombia">Colombia</li>
-					                <li rel="Other">Other country</li>
-                                </ul>
+                                <ul class="dropdown" id="departments" style="overflow-y: scroll; height:150px;"></ul>
                             </div>
                             <!--div class="form-holder"></div-->
                         </div>
@@ -123,10 +143,12 @@
                         <div class="form-row">
                             <div class="form-holder">
                                 <input type="hidden" id="municipalityInput">
-                                <input list="municipalities" id="municipality" type="text" placeholder="Municipality" class="form-control">
+                                <input list="municipalities-dl" id="municipality" type="text" placeholder="Municipality" class="form-control">
+                                <span>Verifique que el municipio exista*</span>
                             </div>
                             <div class="form-holder">
                                 <input type="text" placeholder="Zip Code" class="form-control" id="zip_code">
+                                <span>Debe ser númerico y de 6 digitos*</span>
                             </div>
                         </div>
 
@@ -149,11 +171,12 @@
                         <div class="form-row">
                             <div class="form-holder w-100">
                                 <textarea id="message" placeholder="Your messagere here!" class="form-control" style="height: 99px;"></textarea>
+                                <span>No puede contener signos raros*</span>
                             </div>
                         </div>
                         <div class="checkbox-circle mt-24">
                             <label>
-                                <input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
+                                <input type="checkbox" id="conditions">  Please accept <a href="#">terms and conditions ?</a>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -164,11 +187,20 @@
     </div>
 
     <!-- JQUERY -->
-    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../assets/js/registration/jquery-3.3.1.min.js"></script>
 
     <!-- JQUERY STEP -->
-    <script src="../assets/js/jquery.steps.js"></script>
+    <script src="../assets/js/registration/jquery.steps.js"></script>
+
+    <!-- Bootstap 3.3-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- uso de wrapper-->
     <script src="../assets/js/registration/main.js"></script>
+    <!-- constantes del proyecto: -->
+    <script src="../assets/js/globalVariables.js"></script>
+
+    <!-- lógica de validaciones y envío de infromación. -->
     <script src="../assets/js/registration/events.js"></script>
 </body>
 </html>

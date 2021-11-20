@@ -21,6 +21,7 @@ public class UserServices {
 	private UsersRepository repo;
 	
 	//Servicios de la info del usuario:
+	@Autowired
 	private InfoUserServices servInfo;
 	
 	/**
