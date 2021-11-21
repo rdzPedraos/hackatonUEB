@@ -1,3 +1,4 @@
+
 $(function(){
 	$("#wizard").steps({
         headerTag: "h2",

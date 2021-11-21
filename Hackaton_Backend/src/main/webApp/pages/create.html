@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+
+    <!-- validamos como está entrando: -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/globalVariables.js"></script>
+    <script src="../assets/js/validateLogin.js"></script>
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="../assets/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+    <link rel="stylesheet" href="../assets/css/create/estilos.css">
+</head>
+<body>
+    <div class="container">  
+        <form id="contact" action="" method="post">
+            <div id="toMain">Volver</div>
+            <input type="hidden" name="code_user" id="code_user">
+            <h3>Hazlo posible!</h3>
+            
+            <h4>Comparte tus productos con el mundo!</h4>
+            <fieldset>
+                <input name="title" placeholder="Ingrese el titulo del producto" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input name="price" placeholder="Ingrese el precio $$" type="number" tabindex="2" required>
+            </fieldset>
+            <fieldset>
+                <input name="available" placeholder="Número de unidades disponibles" type="number" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <input name="file" placeholder="Upload image" type="file" tabindex="4" required multiple>
+            <!--input placeholder="Upload image" type="submit" tabindex="5" required-->
+            </fieldset>
+
+            <fieldset>
+                <select name="code_category" id="categoria">
+                    <option value='' select>Seleccione la categoria</option>
+                    <option value="1">Tecnología</option>
+                    <option value="2">Muebles</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <textarea name="description" placeholder="Describe tú producto" tabindex="6" required></textarea>
+            </fieldset>
+
+            <fieldset>
+                <button  type="submit" >Submit</button>
+            </fieldset>
+        </form>
+      </div>
+
+
+    <script src="../assets/js/create/events.js"></script>
+</body>
+</html>

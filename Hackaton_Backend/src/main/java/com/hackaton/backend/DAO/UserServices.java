@@ -50,6 +50,16 @@ public class UserServices {
 		return null;
 	}
 	
+	public UsersDTO search(String email, Long code){
+		//Obtengo el usuario:
+		UsersDTO user = getUserByEmail(email);
+		
+		//Rertorna null si no encontró nada.
+		//Usuario si encontró algo.
+		if( user != null && user.getCode() == code) return user;
+		return null;
+	}
+	
 	/**
 	 * Crea un usuario a la vez que crea la información de ese usuario.
 	 * @param object json con la información de user e info.

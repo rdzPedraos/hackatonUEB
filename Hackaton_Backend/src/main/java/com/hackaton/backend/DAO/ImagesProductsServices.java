@@ -17,7 +17,8 @@ public class ImagesProductsServices {
 	@Autowired
 	ImagesProductsRepository repo;
 	private static String MAIN_PATH = "C:/Users/ESTUDIANTE/Desktop/Ueb/hackaton/Hackaton_Backend/";
-	private static String path = MAIN_PATH+"src/main/webApp/assets/img/products/";
+	private static String PATH = MAIN_PATH+"src/main/webApp";
+	private static String WEB_PATH = "/assets/img/products/";
 	
 	
 	/**
@@ -48,10 +49,7 @@ public class ImagesProductsServices {
 	) {
 		boolean success = false;
 		
-		String url = FileUtils.upload(file, path+codeUser+"/"+codeProduct);
-		System.out.println("________________________");
-		System.out.println(url);
-		System.out.println("________________________");
+		String url = FileUtils.upload(file, PATH, WEB_PATH+codeUser+"/"+codeProduct);
 		if( url != null ) {
 			ImagesProductsDTO imgProd = new ImagesProductsDTO(codeProduct, url);
 			if( repo.save(imgProd) != null ) {

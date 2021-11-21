@@ -24,10 +24,15 @@ public class UserController {
 		return services.list();
 	}
 	
-	@GetMapping("/search/{email}/{password}")
+	@PostMapping("/search")
 	//Buscar usuario en concreto:
-	public UsersDTO list(@PathVariable("email") String email, @PathVariable("password") String password){
+	public UsersDTO list(@RequestParam("email") String email, @RequestParam("password") String password){
 		return services.search(email, password);
+	}
+	
+	@GetMapping("/search/{code}/{email}")
+	public UsersDTO list(@PathVariable("email") String email, @PathVariable("code") Long code){
+		return services.search(email, code);
 	}
 	
 	@PostMapping("/create")

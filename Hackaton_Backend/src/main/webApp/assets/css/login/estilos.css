@@ -65,6 +65,7 @@ img {
 .contenedor {
     max-width: 85rem;
     width: 100%;
+    min-height: 500px;
     background-color: var(--blanco);
     padding: 4rem 3rem;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
@@ -99,12 +100,16 @@ LOGIN AND SING UP
 }
 
 .contenedor .cover::before {
-    content: '';
+    content: '4Usos';
+    color: #c8ff00;
+    text-align: center;
+    font-size: 100px;
+
     height: 100%;
     width: 100%;
     position: absolute;
     background-color: var(--verdeOlivo);
-    opacity: 0.5;
+    opacity: 0.7;
     z-index: 100;
 }
 
@@ -242,6 +247,31 @@ form .contenido-form .boton input {
     transition: all .4s ease;
 }
 
+form .contenido-form .boton input:disabled{
+    background: #a1a1a1;
+}
+
+
 form .contenido-form .boton input:hover {
     background-color: #5b644d;
+}
+
+span.msj{
+    color: #cb0e0e;
+}
+
+.contenido-form .input-caja.error input,
+.contenido-form .input-caja.error i
+{
+    color:#9b1313;
+    border-color: #cb2828;
+}
+
+
+
+.contenido-form .input-caja.success input,
+.contenido-form .input-caja.success i
+{
+    border-color: #28cb62;
+    color: #6d7f52;
 }

@@ -148,6 +148,9 @@ img {
 .image-holder {
   width: 40%;
 }
+.image-holder img {
+  height: 100%;
+}
 
 .form-content {
   width: 60%;
@@ -486,10 +489,10 @@ textarea.form-control {
   }
 
   .image-holder {
+    height: 506px;
     width: 100%;
   }
   .image-holder img {
-    height: 521px;
     width: 100%;
   }
 

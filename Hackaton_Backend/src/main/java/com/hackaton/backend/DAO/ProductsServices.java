@@ -135,7 +135,7 @@ public class ProductsServices {
 	private JsonObject validate(ProductsDTO product) {
 		JsonObject msj = new JsonObject();
 		
-		String rgx = "^[A-Za-záéíóúÁÉÍÓÚ ]{0,255}$";
+		String rgx = "^[A-Za-z0-9áéíóúÁÉÍÓÚ \\n,.:;]{0,255}$";
 		if(
 			Pattern.compile(rgx).matcher(product.getTitle()).find() &&
 			Pattern.compile(rgx).matcher(product.getDescription()).find() &&
